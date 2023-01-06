@@ -4,7 +4,7 @@ NAMESPACE=edu
 NAME=hashicups
 BINARY=terraform-provider-${NAME}
 VERSION=0.2
-OS_ARCH=darwin_amd64
+OS_ARCH=$OS_ARCH
 
 default: install
 
@@ -34,4 +34,4 @@ test:
 	echo $(TEST) | xargs -t -n4 go test $(TESTARGS) -timeout=30s -parallel=4                    
 
 testacc: 
-	TF_ACC=1 go test $(TEST) -v $(TESTARGS) -timeout 120m   
+	TF_ACC=1 go test $(TEST) -v $(TESTARGS) -timeout 120m
