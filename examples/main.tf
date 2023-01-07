@@ -23,7 +23,7 @@ output "psl" {
 }
 
 data "hashicups_order" "order" {
-  id = 1
+  id = 6
 }
 
 output "order" {

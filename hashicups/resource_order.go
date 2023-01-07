@@ -165,8 +165,18 @@ func resourceOrderUpdate(ctx context.Context, d *schema.ResourceData, m interfac
 }
 
 func resourceOrderDelete(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
-	// Warning or errors can be collected in a slice type
+	c := m.(*hc.Client)
+
 	var diags diag.Diagnostics
+
+	orderID := d.Id()
+
+	err := c.DeleteOrder(orderID)
+	if err != nil {
+		return diag.FromErr(err)
+	}
+
+	d.SetId("")
 
 	return diags
 }
